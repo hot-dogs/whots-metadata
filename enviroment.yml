@@ -1,0 +1,7 @@
+name: whots-metadata
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - scrapy=2.7.0
+  - python=3.10
