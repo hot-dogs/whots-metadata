@@ -1,3 +1,6 @@
 # WHOTS Scrapy Metadata
 
-- testing whots scrapy
+```python
+cd /whots_metadata
+scrapy crawl whotsmetadata -O /results/items.json
+```
