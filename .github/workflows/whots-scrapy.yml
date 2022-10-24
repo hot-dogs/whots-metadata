@@ -20,25 +20,20 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-
       - name: Add conda to system path
         run: |
           # $CONDA is an environment variable pointing to the root of the miniconda directory
           echo $CONDA/bin >> $GITHUB_PATH
-
       - name: Install dependencies
         run: |
           conda env update --file environment.yml --name base
-
       - name : Activate conda
         run: |
           echo $CONDA/bin/activate base
-
       - name: Fetch latest WHOTS data
         working-directory: ./src/whots_metadata
         run: |-
           scrapy crawl whotsmetadata -O ../../results/items.json
-
       - name: Commit and push if it changed
         run: |-
           git config user.name "Automated"
@@ -47,4 +42,3 @@ jobs:
           timestamp=$(date -u)
           git commit -m "Latest WHOTS Metadadata: ${timestamp}" || exit 0
           git push
-    
