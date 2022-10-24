@@ -38,4 +38,4 @@ cd whots_metadata
 scrapy crawl whotsmetadata -O ../results/items.json                    
 ```
 
-- The results will be stored under `/results`, on `.json` file.
+- The results will be stored under `/results` folder.
