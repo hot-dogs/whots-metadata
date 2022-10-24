@@ -1,7 +1,7 @@
 name: WHOTS Scrape Metadata
 
 on:
-#  push:
+  push:
 #  workflow_dispatch:
   schedule:
     - cron: '0 0 1 * *' # At 00:00 on day-of-month 1  --> https://crontab.guru/#0_0_1_*_*
@@ -14,25 +14,34 @@ jobs:
         python-version: [ 3.10.0 ]
 
     steps:
-      - uses: actions/checkout@v2
+      # Checks-out your repository so your job can access it
+      - name: Check-out repository
+      - uses: actions/checkout@v3
+
+      # Set up a Python environment for use in actions
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
+
       - name: Add conda to system path
         run: |
           # $CONDA is an environment variable pointing to the root of the miniconda directory
           echo $CONDA/bin >> $GITHUB_PATH
+
       - name: Install dependencies
         run: |
           conda env update --file environment.yml --name base
+
       - name : Activate conda
         run: |
           echo $CONDA/bin/activate base
+
       - name: Fetch latest WHOTS data
         working-directory: ./src/whots_metadata
         run: |-
           scrapy crawl whotsmetadata -O ../../results/items.json
+
       - name: Commit and push if it changed
         run: |-
           git config user.name "Automated"
