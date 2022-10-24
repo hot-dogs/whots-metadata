@@ -34,8 +34,6 @@ conda create --prefix ./.env python=3.10 scrapy=2.7.0 -c conda-forge
 
 ```bash
 conda activate ./.env      
-cd whots_metadata
-scrapy crawl whotsmetadata -O ../results/items.json                    
+cd src/whots_metadata
+scrapy crawl whotsmetadata -O ../../results/items.json                    
 ```
-
-- The results will be stored under `/results` folder.
