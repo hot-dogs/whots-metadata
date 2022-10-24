@@ -5,7 +5,7 @@ Build and install the project.
 from setuptools import setup, find_packages
 
 setup(
-    name='whots-metadata',
+    name='whots_metadata',
     version='0.0.1',
     extras_require={
         'scrapy': ['scrapy>=2.7.0'],
