@@ -30,7 +30,7 @@ jobs:
         run: |
           echo $CONDA/bin/activate base
       - name: Fetch latest WHOTS data
-        working-directory: ./whots_metadata
+        working-directory: ./src/whots_metadata
         run: |-
           scrapy crawl whotsmetadata -O ../results/items.json
       - name: Commit and push if it changed
