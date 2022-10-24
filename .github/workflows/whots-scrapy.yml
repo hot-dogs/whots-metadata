@@ -9,9 +9,6 @@ on:
 jobs:
   scheduled:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./whots_metadata
     strategy:
       matrix:
         python-version: [ 3.10.0 ]
@@ -33,6 +30,7 @@ jobs:
         run: |
           echo $CONDA/bin/activate base
       - name: Fetch latest WHOTS data
+        working-directory: ./whots_metadata
         run: |-
           scrapy crawl whotsmetadata -O ../results/items.json
       - name: Commit and push if it changed
