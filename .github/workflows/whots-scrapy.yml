@@ -14,12 +14,9 @@ jobs:
         python-version: [ 3.10.0 ]
 
     steps:
-      # Checks-out your repository so your job can access it
-      - name: Check-out repository
+      - name: Check-out repository # Checks-out your repository so your job can access it
       - uses: actions/checkout@v3
-
-      # Set up a Python environment for use in actions
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }}  #Set up a Python environment for use in actions
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
