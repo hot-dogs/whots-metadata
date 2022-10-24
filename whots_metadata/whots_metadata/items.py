@@ -9,4 +9,8 @@ import scrapy
 class WhotsMetadataItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    number = scrapy.Field()
+    sys1 = scrapy.Field()
+    sys2 = scrapy.Field()
+    link1 = scrapy.Field()
+    link2 = scrapy.Field()
