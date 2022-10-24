@@ -1,4 +1,4 @@
-ame: WHOTS Scrape Metadata  
+name: WHOTS Scrape Metadata  
 
 on:
   push:
