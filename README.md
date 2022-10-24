@@ -1,6 +1,6 @@
-# WHOTS Scrapy Metadata
+# WHOTS Metadata Scrapper
 
-- This scrapy project is used for extracting metadata information from
+- This is a Scrapy Framework project for scraping some information from
   the [Upper Ocean Processes Group / Project WHOTS - WHOI Hawaii Ocean Time-series Station](https://uop.whoi.edu/currentprojects/WHOTS/whotsdata.html)
   website.
 
@@ -10,7 +10,7 @@
   at [results/items.json](https://github.com/hot-dogs/whots-metadata/blob/main/results/items.json)
 
 
-# Prerequisites
+# Prerequisites:
 
 ```yaml
 name: whots-metadata
@@ -22,13 +22,13 @@ dependencies:
   - python=3.10
 ```
 
-# Installing 
+# Installing: 
 
 ```bash
 conda create --prefix ./.env python=3.10 scrapy=2.7.0 -c conda-forge  
 ```
 
-# Running the spider
+# Usage:
 
 - To run whots_metadata crawler: 
 
