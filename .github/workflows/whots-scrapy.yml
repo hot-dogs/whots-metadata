@@ -1,8 +1,8 @@
 name: WHOTS Scrape Metadata
 
 on:
-  push:
-  workflow_dispatch:
+#  push:
+#  workflow_dispatch:
   schedule:
     - cron: '0 0 1 * *' # At 00:00 on day-of-month 1  --> https://crontab.guru/#0_0_1_*_*
 
