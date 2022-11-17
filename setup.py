@@ -17,4 +17,3 @@ setup(
     description='A scrapy framework project for scraping WHOTS information  '
                 'from https://uop.whoi.edu/currentprojects/WHOTS/whotsdata.html',
 )
-
