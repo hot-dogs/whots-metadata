@@ -4,7 +4,7 @@ on:
   #push:
   #workflow_dispatch:
   schedule:
-    - cron: '0 0 1 * *' # At 00:00 on day-of-month 1  --> https://crontab.guru/#0_0_1_*_*
+    - cron: '0 0 * * *' # At 00:00 on day-of-month 1  --> https://crontab.guru/#0_0_1_*_*
 
 jobs:
   scheduled:
