@@ -4,7 +4,7 @@ on:
   #push:
   #workflow_dispatch:
   schedule:
-    - cron: '0 * * * *' # At 00:00 on day-of-month 1  --> https://crontab.guru/#0_0_1_*_*
+    - cron: '0 0 * * *' # At 00:00 every day --> https://crontab.guru/#0_0_1_*_*
 
 jobs:
   scheduled:
@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [ 3.11.0 ]
+        python-version: [ 3.x ]
 
     # Define job steps
     steps:
