@@ -4,7 +4,7 @@
   the [Upper Ocean Processes Group / Project WHOTS - WHOI Hawaii Ocean Time-series Station](https://uop.whoi.edu/currentprojects/WHOTS/whotsdata.html)
   website.
 
-- The data is automatically saved daily at `00:00`.
+- The data is automatically saved `at 00:00 on day-of-month 1`.
   [GitHub actions](https://github.com/hot-dogs/whots-metadata/blob/main/.github/workflows/whots-scrapy.yml)
   and saved
   at [results/items.json](https://github.com/hot-dogs/whots-metadata/blob/main/results/items.json)
