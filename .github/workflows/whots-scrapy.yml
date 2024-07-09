@@ -23,14 +23,24 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
-        run: conda env update --file environment.yml --name base
+        run: |
+          conda env update --file environment.yml --name base
+          echo "Conda environment created"
 
-      - name: Activate conda
-        run: source $CONDA/bin/activate base
+      - name: Activate conda and verify installation
+        run: |
+          source $CONDA/bin/activate base
+          conda info --envs
+          which python
+          python --version
+          conda list
+          which scrapy
 
       - name: Fetch latest WHOTS data
         working-directory: ./src/whots_metadata
-        run: scrapy crawl whotsmetadata -O ../../results/items.json
+        run: |
+          source $CONDA/bin/activate base
+          scrapy crawl whotsmetadata -O ../../results/items.json
 
       - name: Commit and push if it changed
         run: |
