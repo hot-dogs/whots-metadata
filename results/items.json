@@ -1,4 +1,20 @@
 [
-{"CURRENT": {"number": "19", "sys1": "Logger 9", "sys2": "Logger 42", "link1": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XIX_MET_sys1.txt", "link2": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XIX_MET_sys2.txt"}},
-{"PREVIOUS": {"number": "18", "sys1": "Logger 7", "sys2": "Logger 8", "link1": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XVIII_MET_sys1.txt", "link2": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XVIII_MET_sys2.txt"}}
+    {
+        "CURRENT": {
+            "number": "20",
+            "sys1": "Logger 3",
+            "sys2": "Logger 8",
+            "link1": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XX_MET_sys1.txt",
+            "link2": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XX_MET_sys2.txt"
+        }
+    },
+    {
+        "PREVIOUS": {
+            "number": "19",
+            "sys1": "Logger 9",
+            "sys2": "Logger 42",
+            "link1": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XIX_MET_sys1.txt",
+            "link2": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XIX_MET_sys2.txt"
+        }
+    }
 ]
