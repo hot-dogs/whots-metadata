@@ -18,8 +18,8 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - scrapy=2.11.0
-  - python=3.12
+  - scrapy
+  - python
 ```
 
 # Installing: 
