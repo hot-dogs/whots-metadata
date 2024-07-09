@@ -18,14 +18,14 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - scrapy=2.7.0
-  - python=3.10
+  - scrapy=2.11.0
+  - python=3.12
 ```
 
 # Installing: 
 
 ```bash
-conda create --prefix ./.env python=3.10 scrapy=2.7.0 -c conda-forge  
+conda create --prefix ./.env python scrapy -c conda-forge  
 ```
 
 # Usage:
