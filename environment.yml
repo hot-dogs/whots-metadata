@@ -1,7 +1,7 @@
-name: whots-metadata
+name: ~/whots-metadata/.env
 channels:
   - conda-forge
   - defaults
 dependencies:
-  - scrapy=2.11.2
-  - python=3.12
+  - scrapy
+  - python

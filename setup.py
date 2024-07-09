@@ -2,13 +2,13 @@
 Build and install the project.
 """
 
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 setup(
     name='whots_metadata',
-    version='0.0.1',
+    version='0.0.2',
     extras_require={
-        'scrapy': ['scrapy>=2.7.0'],
+        'scrapy': ['scrapy>=2.11.2'],
     },
     packages=find_packages(where='src/whots_metadata'),
     package_dir={"": "src/whots_metadata"},
