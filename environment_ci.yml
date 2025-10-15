@@ -1,0 +1,6 @@
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12.4
+  - scrapy=2.11.2
