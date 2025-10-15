@@ -18,7 +18,6 @@ concurrency:
 
 jobs:
   scheduled:
-    # if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,22 +27,26 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      # Reliable Conda setup (no $CONDA assumption)
+      # Reliable Conda setup (avoid touching base)
       - name: Set up Miniconda
         uses: conda-incubator/setup-miniconda@v3
         with:
-          auto-update-conda: true
-          activate-environment: base
-          python-version: ${{ matrix.python-version }}
-          use-mamba: true
           miniforge-version: latest
+          use-mamba: true
+          auto-activate-base: false
+          activate-environment: whots-${{ matrix.python-version }}
+          python-version: ${{ matrix.python-version }}
           channels: conda-forge,defaults
           channel-priority: strict
+          remove-profiles: true
+          clean-patched-environment-file: true
+          run-post: true
 
       - name: Create/update environment from environment.yml
         shell: bash -l {0}
         run: |
-          mamba env update --name base --file environment.yml
+          # Update the named env from your environment.yml
+          mamba env update -n whots-${{ matrix.python-version }} -f environment.yml
           conda info --envs
           which python
           python --version
