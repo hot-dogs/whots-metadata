@@ -1,53 +1,84 @@
 name: WHOTS Metadata
 
 on:
-  push:
-  workflow_dispatch:
   schedule:
-    - cron: "0 0 1 * *"
+    - cron: "0 0 1 * *" # 00:00 UTC on the 1st each month
+  workflow_dispatch: # allow manual runs
+  push:
+    paths-ignore:
+      - ".github/.keepalive" # avoid re-trigger from our keepalive commit
+      - "results/items.json" # avoid loops if results change
+
+permissions:
+  contents: write # needed to push commits
+
+concurrency:
+  group: whots-metadata-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   scheduled:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.12"]
 
     steps:
-      - name: Check-out repository
-        uses: actions/checkout@v3
+      - name: Check out repository
+        uses: actions/checkout@v4
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+      # Reliable Conda setup (no $CONDA assumption)
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v3
         with:
+          auto-update-conda: true
+          activate-environment: base
           python-version: ${{ matrix.python-version }}
+          use-mamba: true
+          miniforge-version: latest
+          channels: conda-forge,defaults
+          channel-priority: strict
 
-      - name: Install dependencies
+      - name: Create/update environment from environment.yml
+        shell: bash -l {0}
         run: |
-          conda env update --file environment.yml --name base
-          echo "Conda environment created"
-
-      - name: Activate conda and verify installation
-        run: |
-          source $CONDA/bin/activate base
+          mamba env update --name base --file environment.yml
           conda info --envs
           which python
           python --version
-          conda list
-          which scrapy
+          mamba list | head -n 50
+
+      - name: Verify scrapy is available
+        shell: bash -l {0}
+        run: |
+          which scrapy || true
+          scrapy version
 
       - name: Fetch latest WHOTS data
+        shell: bash -l {0}
         working-directory: ./src/whots_metadata
         run: |
-          source $CONDA/bin/activate base
           scrapy crawl whotsmetadata -O ../../results/items.json
 
-      - name: Commit and push if it changed
+      - name: Commit and push changes (with keepalive fallback)
+        shell: bash -l {0}
         run: |
-          git config user.name "Automated"
-          git config user.email "actions@users.noreply.github.com"
-          git add -A
-          timestamp=$(date -u)
-          git commit -m "Latest WHOTS Metadata: ${timestamp}" || exit 0
-          git push
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
+          # Stage real changes first
+          git add -A
+          if git diff --cached --quiet; then
+            # Nothing changed — write/update a keepalive file so repo has activity
+            mkdir -p .github
+            date -u +"%Y-%m-%dT%H:%M:%SZ" > .github/.keepalive
+            git add .github/.keepalive
+            git commit -m "[skip ci] keepalive: prevent schedule disable"
+          else
+            timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+            git commit -m "[skip ci] Latest WHOTS Metadata: ${timestamp}"
+          fi
+
+          git push
