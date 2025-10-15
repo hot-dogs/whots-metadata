@@ -3,14 +3,14 @@ name: WHOTS Metadata
 on:
   schedule:
     - cron: "0 0 1 * *" # 00:00 UTC on the 1st each month
-  workflow_dispatch: # allow manual runs
+  workflow_dispatch:
   push:
     paths-ignore:
-      - ".github/.keepalive" # avoid re-trigger from our keepalive commit
-      - "results/items.json" # avoid loops if results change
+      - ".github/.keepalive"
+      - "results/items.json"
 
 permissions:
-  contents: write # needed to push commits
+  contents: write
 
 concurrency:
   group: whots-metadata-${{ github.ref }}
@@ -27,7 +27,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      # Reliable Conda setup (avoid touching base)
+      # Conda setup (avoid touching base; create a named env)
       - name: Set up Miniconda
         uses: conda-incubator/setup-miniconda@v3
         with:
@@ -39,14 +39,20 @@ jobs:
           channels: conda-forge,defaults
           channel-priority: strict
           remove-profiles: true
-          clean-patched-environment-file: true
           run-post: true
 
-      - name: Create/update environment from environment.yml
+      # Remove problematic 'name:' or 'prefix:' lines from environment.yml
+      - name: Sanitize environment.yml for CI
         shell: bash -l {0}
         run: |
-          # Update the named env from your environment.yml
-          mamba env update -n whots-${{ matrix.python-version }} -f environment.yml
+          awk 'BEGIN{IGNORECASE=1} !/^[[:space:]]*name[[:space:]]*:/ && !/^[[:space:]]*prefix[[:space:]]*:/ {print}' environment.yml > environment_ci.yml
+          echo "----- environment_ci.yml -----"
+          cat environment_ci.yml
+
+      - name: Create/Update env from sanitized file
+        shell: bash -l {0}
+        run: |
+          mamba env update -n whots-${{ matrix.python-version }} -f environment_ci.yml
           conda info --envs
           which python
           python --version
@@ -71,10 +77,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-          # Stage real changes first
           git add -A
           if git diff --cached --quiet; then
-            # Nothing changed — write/update a keepalive file so repo has activity
             mkdir -p .github
             date -u +"%Y-%m-%dT%H:%M:%SZ" > .github/.keepalive
             git add .github/.keepalive
@@ -83,5 +87,4 @@ jobs:
             timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
             git commit -m "[skip ci] Latest WHOTS Metadata: ${timestamp}"
           fi
-
           git push
