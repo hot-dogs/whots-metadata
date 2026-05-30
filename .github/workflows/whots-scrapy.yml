@@ -27,18 +27,18 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # Conda setup (avoid touching base; create a named env)
       - name: Set up Miniconda
-        uses: conda-incubator/setup-miniconda@v3
+        uses: conda-incubator/setup-miniconda@v4
         with:
           miniforge-version: latest
           use-mamba: true
-          auto-activate-base: false
+          auto-activate: true
           activate-environment: whots-${{ matrix.python-version }}
           python-version: ${{ matrix.python-version }}
-          channels: conda-forge,defaults
+          channels: conda-forge
           channel-priority: strict
           remove-profiles: true
           run-post: true

@@ -46,7 +46,8 @@ python -m pip install --no-deps -e .
 
 The conda environment supplies runtime dependencies. The editable install only
 registers the local `whots_metadata` package for import by tools such as
-`hot-forecast`.
+`hot-forecast`. The project uses only `conda-forge` to avoid Anaconda
+commercial-channel warnings in CI.
 
 `environment.yml` pins Twisted with Scrapy because newer Twisted releases can
 break older Scrapy downloader imports in CI.
