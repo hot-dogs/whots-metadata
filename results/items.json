@@ -1,4 +1,120 @@
 [
-{"CURRENT": {"number": "21", "sys1": "Logger 5", "sys2": "Logger 42", "link1": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_MET_sys1.txt", "link2": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_MET_sys2.txt"}},
-{"PREVIOUS": {"number": "20", "sys1": "Logger 3", "sys2": "Logger 8", "link1": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XX_MET_sys1.txt", "link2": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XX_MET_sys2.txt"}}
+  {
+    "CURRENT": {
+      "number": "21",
+      "sys1": "Logger 5",
+      "sys2": "Logger 42",
+      "link1": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_MET_sys1.txt",
+      "link2": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_MET_sys2.txt",
+      "deployment_label": "WHOTS-21",
+      "roman": "XXI",
+      "deployed_utc": "2025-09-24T00:53:00Z",
+      "deployment_location_text": "22° 46´ N 158° W",
+      "ndbc_station_id": "51WH0",
+      "page_last_updated": "2026/05/28",
+      "sys1_daily_url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_MET_sys1QC_daily.txt",
+      "sys2_daily_url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_MET_sys2QC_daily.txt",
+      "sys1_complete_url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_MET_sys1QC.txt",
+      "sys2_complete_url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_MET_sys2QC.txt",
+      "plot_urls": [
+        "https://uop.whoi.edu/currentprojects/WHOTS/whotsplot.html?images/WHOTS-XXI_MET_p1QC_all.png",
+        "https://uop.whoi.edu/currentprojects/WHOTS/whotsplot.html?images/WHOTS-XXI_MET_p2QC_all.png",
+        "https://uop.whoi.edu/currentprojects/WHOTS/whotsplot.html?images/WHOTS-XXI_MET_p3QC_all.png"
+      ],
+      "position_sources": {
+        "beacon": {
+          "kind": "beacon",
+          "url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_beacon.txt",
+          "file_name": "WHOTS-XXI_beacon.txt",
+          "last_modified": "2025-12-18 17:44",
+          "size": "343",
+          "end_url": null,
+          "end_file_name": null,
+          "end_last_modified": null,
+          "end_size": null
+        },
+        "melo": {
+          "kind": "melo",
+          "url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_Melo.txt",
+          "file_name": "WHOTS-XXI_Melo.txt",
+          "last_modified": "2026-05-29 21:31",
+          "size": "73K",
+          "end_url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_Melo_end.txt",
+          "end_file_name": "WHOTS-XXI_Melo_end.txt",
+          "end_last_modified": "2026-05-29 21:31",
+          "end_size": "595"
+        },
+        "rover": {
+          "kind": "rover",
+          "url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_Rover.txt",
+          "file_name": "WHOTS-XXI_Rover.txt",
+          "last_modified": "2026-05-30 00:11",
+          "size": "53K",
+          "end_url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_Rover_end.txt",
+          "end_file_name": "WHOTS-XXI_Rover_end.txt",
+          "end_last_modified": "2026-05-30 00:11",
+          "end_size": "488"
+        }
+      }
+    }
+  },
+  {
+    "PREVIOUS": {
+      "number": "20",
+      "sys1": "Logger 3",
+      "sys2": "Logger 8",
+      "link1": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XX_MET_sys1.txt",
+      "link2": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XX_MET_sys2.txt",
+      "deployment_label": "WHOTS-20",
+      "roman": "XX",
+      "deployed_utc": "2024-06-02T03:47:00Z",
+      "deployment_location_text": null,
+      "ndbc_station_id": "51WH0",
+      "page_last_updated": "2026/05/28",
+      "sys1_daily_url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XX_MET_sys1QC_daily.txt",
+      "sys2_daily_url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XX_MET_sys2QC_daily.txt",
+      "sys1_complete_url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XX_MET_sys1QC.txt",
+      "sys2_complete_url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XX_MET_sys2QC.txt",
+      "plot_urls": [
+        "https://uop.whoi.edu/currentprojects/WHOTS/whotsplot.html?images/WHOTS-XX_MET_p1QC_all.png",
+        "https://uop.whoi.edu/currentprojects/WHOTS/whotsplot.html?images/WHOTS-XX_MET_p2QC_all.png",
+        "https://uop.whoi.edu/currentprojects/WHOTS/whotsplot.html?images/WHOTS-XX_MET_p3QC_all.png"
+      ],
+      "position_sources": {
+        "beacon": {
+          "kind": "beacon",
+          "url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XX_beacon.txt",
+          "file_name": "WHOTS-XX_beacon.txt",
+          "last_modified": "2025-12-18 17:44",
+          "size": "3.7K",
+          "end_url": null,
+          "end_file_name": null,
+          "end_last_modified": null,
+          "end_size": null
+        },
+        "melo": {
+          "kind": "melo",
+          "url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XX_Melo.txt",
+          "file_name": "WHOTS-XX_Melo.txt",
+          "last_modified": "2025-12-18 17:44",
+          "size": "158K",
+          "end_url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XX_Melo_end.txt",
+          "end_file_name": "WHOTS-XX_Melo_end.txt",
+          "end_last_modified": "2025-12-18 17:44",
+          "end_size": "594"
+        },
+        "rover": {
+          "kind": "rover",
+          "url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XX_Rover.txt",
+          "file_name": "WHOTS-XX_Rover.txt",
+          "last_modified": "2025-12-18 17:44",
+          "size": "128K",
+          "end_url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XX_Rover_end.txt",
+          "end_file_name": "WHOTS-XX_Rover_end.txt",
+          "end_last_modified": "2025-12-18 17:44",
+          "end_size": "645"
+        }
+      }
+    }
+  }
 ]

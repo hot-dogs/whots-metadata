@@ -8,6 +8,7 @@ on:
     paths-ignore:
       - ".github/.keepalive"
       - "results/items.json"
+      - "results/whots_metadata.json"
 
 permissions:
   contents: write
@@ -19,6 +20,7 @@ concurrency:
 jobs:
   scheduled:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     strategy:
       matrix:
         python-version: ["3.12"]
@@ -41,18 +43,18 @@ jobs:
           remove-profiles: true
           run-post: true
 
-      # Remove problematic 'name:' or 'prefix:' lines from environment.yml
+      # Remove name/prefix before CI env update so generated files stay outside the repo.
       - name: Sanitize environment.yml for CI
         shell: bash -l {0}
         run: |
-          awk 'BEGIN{IGNORECASE=1} !/^[[:space:]]*name[[:space:]]*:/ && !/^[[:space:]]*prefix[[:space:]]*:/ {print}' environment.yml > environment_ci.yml
+          awk 'BEGIN{IGNORECASE=1} !/^[[:space:]]*name[[:space:]]*:/ && !/^[[:space:]]*prefix[[:space:]]*:/ {print}' environment.yml > "$RUNNER_TEMP/environment_ci.yml"
           echo "----- environment_ci.yml -----"
-          cat environment_ci.yml
+          cat "$RUNNER_TEMP/environment_ci.yml"
 
       - name: Create/Update env from sanitized file
         shell: bash -l {0}
         run: |
-          mamba env update -n whots-${{ matrix.python-version }} -f environment_ci.yml
+          mamba env update -n whots-${{ matrix.python-version }} -f "$RUNNER_TEMP/environment_ci.yml"
           conda info --envs
           which python
           python --version
@@ -64,11 +66,16 @@ jobs:
           which scrapy || true
           scrapy version
 
+      - name: Run parser tests
+        shell: bash -l {0}
+        run: |
+          make test
+
       - name: Fetch latest WHOTS data
         shell: bash -l {0}
-        working-directory: ./src/whots_metadata
         run: |
-          scrapy crawl whotsmetadata -O ../../results/items.json
+          rm -f results/whots_metadata.json
+          make crawl
 
       - name: Commit and push changes (with keepalive fallback)
         shell: bash -l {0}
@@ -77,7 +84,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-          git add -A
+          git add .
           if git diff --cached --quiet; then
             mkdir -p .github
             date -u +"%Y-%m-%dT%H:%M:%SZ" > .github/.keepalive

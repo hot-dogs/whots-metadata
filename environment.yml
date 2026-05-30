@@ -1,7 +1,7 @@
-name: /Users/fcp/Documents/workspace/1.git/4.whots/whots-metadata/.env
+name: whots-metadata
 channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.12.4
+  - python=3.12
   - scrapy=2.11.2
