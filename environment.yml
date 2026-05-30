@@ -4,4 +4,8 @@ channels:
   - defaults
 dependencies:
   - python=3.12
+  - pip
+  - setuptools>=61
+  - wheel
   - scrapy=2.11.2
+  - twisted=24.3.*

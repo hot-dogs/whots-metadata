@@ -41,7 +41,15 @@ dependencies:
 ```bash
 conda env update --prefix ./.env --file environment.yml --prune
 conda activate ./.env
+python -m pip install --no-deps -e .
 ```
+
+The conda environment supplies runtime dependencies. The editable install only
+registers the local `whots_metadata` package for import by tools such as
+`hot-forecast`.
+
+`environment.yml` pins Twisted with Scrapy because newer Twisted releases can
+break older Scrapy downloader imports in CI.
 
 # Usage:
 

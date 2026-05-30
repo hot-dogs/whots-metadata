@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "whots-metadata"
+version = "0.1.0"
+description = "Parse WHOTS deployment metadata and position-source links from the WHOI WHOTS pages."
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [
+  { name = "Fernando Carvalho Pacheco", email = "fernando.pacheco@hawaii.edu" },
+]
+dependencies = []
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Oceanography",
+]
+
+[project.optional-dependencies]
+scrapy = ["scrapy>=2.11.2", "twisted<25"]
+dev = ["scrapy>=2.11.2", "twisted<25"]
+
+[tool.setuptools.packages.find]
+where = ["src/whots_metadata"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
