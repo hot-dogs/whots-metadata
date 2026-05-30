@@ -221,7 +221,7 @@
     "sys2_daily_url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XX_MET_sys2QC_daily.txt"
   },
   "schema_version": "whots-metadata.v1",
-  "scraped_at_utc": "2026-05-30T00:29:11Z",
+  "scraped_at_utc": "2026-05-30T00:36:28Z",
   "source_health": {
     "data_directory": {
       "files_discovered": 501,
