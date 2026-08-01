@@ -23,24 +23,24 @@
       },
       "melo": {
         "end_file_name": "WHOTS-XXI_Melo_end.txt",
-        "end_last_modified": "2026-07-01 01:41",
+        "end_last_modified": "2026-08-01 01:41",
         "end_size": "595",
         "end_url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_Melo_end.txt",
         "file_name": "WHOTS-XXI_Melo.txt",
         "kind": "melo",
-        "last_modified": "2026-07-01 01:41",
-        "size": "84K",
+        "last_modified": "2026-08-01 01:41",
+        "size": "94K",
         "url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_Melo.txt"
       },
       "rover": {
         "end_file_name": "WHOTS-XXI_Rover_end.txt",
-        "end_last_modified": "2026-07-01 00:11",
+        "end_last_modified": "2026-08-01 00:12",
         "end_size": "646",
         "end_url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_Rover_end.txt",
         "file_name": "WHOTS-XXI_Rover.txt",
         "kind": "rover",
-        "last_modified": "2026-07-01 00:11",
-        "size": "62K",
+        "last_modified": "2026-08-01 00:12",
+        "size": "69K",
         "url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_Rover.txt"
       }
     },
@@ -79,24 +79,24 @@
         },
         "melo": {
           "end_file_name": "WHOTS-XXI_Melo_end.txt",
-          "end_last_modified": "2026-07-01 01:41",
+          "end_last_modified": "2026-08-01 01:41",
           "end_size": "595",
           "end_url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_Melo_end.txt",
           "file_name": "WHOTS-XXI_Melo.txt",
           "kind": "melo",
-          "last_modified": "2026-07-01 01:41",
-          "size": "84K",
+          "last_modified": "2026-08-01 01:41",
+          "size": "94K",
           "url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_Melo.txt"
         },
         "rover": {
           "end_file_name": "WHOTS-XXI_Rover_end.txt",
-          "end_last_modified": "2026-07-01 00:11",
+          "end_last_modified": "2026-08-01 00:12",
           "end_size": "646",
           "end_url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_Rover_end.txt",
           "file_name": "WHOTS-XXI_Rover.txt",
           "kind": "rover",
-          "last_modified": "2026-07-01 00:11",
-          "size": "62K",
+          "last_modified": "2026-08-01 00:12",
+          "size": "69K",
           "url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XXI_Rover.txt"
         }
       },
@@ -221,10 +221,10 @@
     "sys2_daily_url": "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XX_MET_sys2QC_daily.txt"
   },
   "schema_version": "whots-metadata.v1",
-  "scraped_at_utc": "2026-07-01T02:48:04Z",
+  "scraped_at_utc": "2026-08-01T02:07:58Z",
   "source_health": {
     "data_directory": {
-      "files_discovered": 501,
+      "files_discovered": 503,
       "status": "OK",
       "url": "https://uop.whoi.edu/currentprojects/WHOTS/data/"
     },
